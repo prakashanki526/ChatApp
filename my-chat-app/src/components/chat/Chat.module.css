@@ -1,0 +1,11 @@
+.chat{
+    flex: 5;
+    height: 100vh;
+    display: none;
+}
+
+@media screen and (min-width: 767px) {
+    .chat{
+        display: inline;
+    }
+}

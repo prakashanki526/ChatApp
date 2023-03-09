@@ -13,7 +13,7 @@
 .box{
     position: relative;
     width: 23.75rem;
-    height: 31.25rem;
+    height: 35.25rem;
     /* height: fit-content; */
     background: #1c1c1c;
     border-radius: 8px;
@@ -26,7 +26,7 @@
     top: -50%;
     left: -55%;
     width: 23.75rem;
-    height: 31.25rem;
+    height: 35.25rem;
     background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
     animation: animate 6s linear infinite;
     transform-origin: bottom right;
@@ -37,7 +37,7 @@
     top: -50%;
     left: -55%;
     width: 23.75rem;
-    height: 31.25rem;
+    height: 35.25rem;
     background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
     animation: animate 6s linear infinite;
     transform-origin: bottom right;
@@ -58,7 +58,7 @@
     border-radius: 8px;
     background: #28292d;
     z-index: 10;
-    padding: 50px 40px;
+    padding: 40px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +74,7 @@
 
 .inputBox{
     position: relative;
-    width: 300px;
+    width: 100%;
     margin-top: 35px;
 }
 
@@ -158,10 +158,13 @@ input[type="submit"]{
     cursor: pointer;
 }
 .wrapper{
-    width: 80%;
+    width: 100%;
     margin-top: 4rem;
 }
 input[type="submit"]:active{
-    opacity: 0.8;
     transform: translateY(2px);
+}
+
+input[type="submit"]:active{
+    opacity: 0.8;
 }
