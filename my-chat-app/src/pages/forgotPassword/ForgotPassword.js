@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import styles from './ForgotPassword.module.css';
 import { toast, Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-import { checkUserExist } from '../../components/api/discover';
+import { checkUserExist, otpMail } from '../../components/api/discover';
+import LoadingSpinner from '../../components/Spinner/Spinner';
+import VerifyOTP from '../verifyOtp/VerifyOTP';
+import SetNewPassword from '../../components/setNewPassword/SetNewPassword';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [isEnabledOTP, setIsEnabledOTP] = useState(false);
+    const [isSetPasswordModal, setIsSetPasswordModal] = useState(false);
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -14,18 +20,28 @@ const ForgotPassword = () => {
             return;
         }
 
+        setIsLoading(true);
         const user = await checkUserExist(email);
+        setIsLoading(false);
+
         if(!user.error){
             toast.error("User do not exist.")
             return;
         }
 
-        // set new password 
+        setIsLoading(true);
+        await otpMail({email});
+        setIsLoading(false);
+        setIsEnabledOTP(true);
     }
+
     return (
         <div className={styles.container}>
             <Toaster position='top-center' reverseOrder={false}></Toaster>
-            <div className={styles.box}>
+            {isEnabledOTP && <VerifyOTP email={email} setIsEnabledOTP={setIsEnabledOTP} setIsSetPasswordModal={setIsSetPasswordModal} />}
+            {isSetPasswordModal && <SetNewPassword email={email} />}
+            {!isEnabledOTP && !isSetPasswordModal && <div className={styles.box}>
+                {isLoading ? <LoadingSpinner /> :
                 <form className={styles.form} autoComplete="off" onSubmit={handleSubmit}>
                     <h2>Recover Password</h2>
                     <div className={styles.inputBox}>
@@ -41,8 +57,8 @@ const ForgotPassword = () => {
                             <Link to={"/signup"}>Register</Link>
                         </div>
                     </div>
-                </form>
-            </div>
+                </form>}
+            </div>}
         </div>
     );
 };

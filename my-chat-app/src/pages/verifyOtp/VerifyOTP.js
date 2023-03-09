@@ -4,6 +4,8 @@ import { Toaster, toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import { verifyOTP, registerUser } from '../../components/api/discover';
+import { userLogin } from '../../components/api/discover';
+import LoadingSpinner from '../../components/Spinner/Spinner';
 
 const VerifyOTP = (props) => {
     const customStyles = {
@@ -25,17 +27,31 @@ const VerifyOTP = (props) => {
     }
     const [userOTP, setUserOTP] = useState("");
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     async function handleVerify(e){
         e.preventDefault();
-        // console.log(props.userData);
+    
+        setIsLoading(true);
         const data = await verifyOTP(userOTP);
+        setIsLoading(false);
         if(data.error){
             toast.error(data.error);
             return;
         }
 
+        if(props.email){
+            console.log('hii');
+            props.setIsEnabledOTP(false);
+            props.setIsSetPasswordModal(true);
+            return;
+        }
+        
+        setIsLoading(true);
         await registerUser(props.userData);
+        const loginData = await userLogin(props.userData.email,props.userData.password);
+        localStorage.token = loginData.token;
+        setIsLoading(false);
         navigate("/");
         toast.success(data.msg);
     }
@@ -49,6 +65,7 @@ const VerifyOTP = (props) => {
                 onRequestClose={handleClose}
                 className={styles.box}
             >
+                {isLoading ? <LoadingSpinner /> :
                 <form className={styles.form} autoComplete="off" onSubmit={handleVerify}>
                     <h2>Verify OTP</h2>
                     <div className={styles.inputBox}>
@@ -64,7 +81,7 @@ const VerifyOTP = (props) => {
                             <span onClick={()=>props.setIsEnabledOTP(false)}>Go Back</span>
                         </div>
                     </div>
-                </form>
+                </form>}
             </Modal>
         </div>
     );

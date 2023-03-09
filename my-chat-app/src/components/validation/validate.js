@@ -29,7 +29,7 @@ function usernameVerify(error={},values){
     return error;
 }
 
-function passwordVerify(error={},values){
+ function passwordVerify(error={},values){
     if(!values.password){
         error.password = toast.error("Password required.");
     } else if(values.password !== values.confirm){

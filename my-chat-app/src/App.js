@@ -4,13 +4,14 @@ import SignupPage from './pages/signup/SignupPage';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import VerifyOTP from "./pages/verifyOtp/VerifyOTP";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
+import {AuthorizeUser} from './components/middleware/auth';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<AuthorizeUser> <Home /> </AuthorizeUser>}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/signup" element={<SignupPage />}></Route>
           <Route path="/verifyOTP" element={<VerifyOTP />}></Route>

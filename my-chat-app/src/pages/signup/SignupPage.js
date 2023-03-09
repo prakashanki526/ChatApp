@@ -6,6 +6,7 @@ import {useFormik} from 'formik';
 import { registerValidation } from '../../components/validation/validate';
 import VerifyOTP from '../verifyOtp/VerifyOTP';
 import { checkUserExist, otpMail } from '../../components/api/discover';
+import LoadingSpinner from '../../components/Spinner/Spinner';
 
 const SignupPage = () => {
     const [formData, setFormData] = useState({});
@@ -25,14 +26,19 @@ const SignupPage = () => {
         }
     });
 
+    const [isLoading, setIsLoading] = useState(false);
+
     async function enableOTP(userData){
+        setIsLoading(true);
         const data = await checkUserExist(userData.email);
         if(data.error){
+            setIsLoading(false);
             toast.error(data.error);
             return;
         }
 
         await otpMail(userData);
+        setIsLoading(false);
         
         setFormData(userData);
         setIsEnabledOTP(true);
@@ -45,6 +51,7 @@ const SignupPage = () => {
             <Toaster position='top-center' reverseOrder={false}></Toaster>
                 {isEnabledOTP && <VerifyOTP userData={formData} setIsEnabledOTP={setIsEnabledOTP} />}
                 {!isEnabledOTP && <div className={styles.box}>
+                {isLoading ? <LoadingSpinner /> :
                 <form className={styles.form} onSubmit={formik.handleSubmit} autoComplete="off">
                     <h2>Sign up</h2>
 
@@ -76,7 +83,7 @@ const SignupPage = () => {
                             Already have an account ? <Link to={"/login"}>Login</Link>
                         </div>
                     </div>
-                </form>
+                </form>}
             </div>}
         </div>
     );
