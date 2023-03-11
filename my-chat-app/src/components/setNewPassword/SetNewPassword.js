@@ -70,7 +70,7 @@ const SetNewPassword = (props) => {
             >
                 {isLoading && <LoadingSpinner />}
                 {!isLoading && <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
-                    <h2>Sign in</h2>
+                    <h2>Reset Password</h2>
                     <div className={styles.inputBox}>
                         <input type = "password" value={password} onChange={(e)=> setPassword(e.target.value)} required="required"></input>
                         <span>New Password</span>
@@ -83,7 +83,7 @@ const SetNewPassword = (props) => {
                         <i></i>
                     </div>
                     <div className={styles.wrapper}>
-                        <input type="submit" value="Login"></input>
+                        <input type="submit" className={styles.submitBtn} value="Change Password"></input>
                         <div className={styles.links}>
                             <Link to={"/login"}>Login</Link>
                             <Link to={"/signup"}>Register</Link>

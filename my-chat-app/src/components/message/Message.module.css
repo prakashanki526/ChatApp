@@ -1,0 +1,38 @@
+.container{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: block;
+}
+.recievedMessage{
+    background-color: #1c1c1c;
+    border-radius: 5px;
+    padding: 10px;
+    width: fit-content;
+    max-width: 80%;
+    margin-bottom: 10px;
+    height: fit-content;
+    color: grey;
+}
+
+.sentMessage{
+    background-color: #51cfd8;
+    border-radius: 5px;
+    padding: 10px;
+    width: fit-content;
+    max-width: 80%;
+    margin-bottom: 10px;
+    height: fit-content;
+    float: right;
+    color: #404147;
+}
+
+@media screen and (min-width: 767px) {
+    .recievedMessage{
+        max-width: 55%;
+    }
+
+    .sentMessage{
+        max-width: 55%;
+    }
+}
+

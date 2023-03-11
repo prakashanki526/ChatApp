@@ -41,7 +41,6 @@ const VerifyOTP = (props) => {
         }
 
         if(props.email){
-            console.log('hii');
             props.setIsEnabledOTP(false);
             props.setIsSetPasswordModal(true);
             return;
@@ -52,6 +51,7 @@ const VerifyOTP = (props) => {
         const loginData = await userLogin(props.userData.email,props.userData.password);
         localStorage.token = loginData.token;
         setIsLoading(false);
+        localStorage.email = props.userData.email;
         navigate("/");
         toast.success(data.msg);
     }
@@ -75,7 +75,7 @@ const VerifyOTP = (props) => {
                     </div>
 
                     <div className={styles.wrapper}>
-                        <input type="submit" value="Verify"></input>
+                        <input type="submit" className={styles.submitBtn} value="Verify"></input>
                         <div className={styles.links}>
                             <Link to={"/login"}>Back to Login</Link>
                             <span onClick={()=>props.setIsEnabledOTP(false)}>Go Back</span>

@@ -78,7 +78,7 @@ const SignupPage = () => {
                         <i></i>
                     </div>
                     <div className={styles.wrapper}>
-                        <input type="submit" value="Register"></input>
+                        <input type="submit" className={styles.submitBtn} value="Register"></input>
                         <div className={styles.links}>
                             Already have an account ? <Link to={"/login"}>Login</Link>
                         </div>

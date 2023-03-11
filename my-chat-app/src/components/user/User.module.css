@@ -1,0 +1,29 @@
+.container{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1px solid rgb(61, 61, 61);
+    color: rgb(203, 203, 203);
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container:active{
+    background-color: #343539;
+}
+
+.imgContainer{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    border: 1px solid white;
+}
+
+.nameContainer{
+    margin-left: 15px;
+}
+

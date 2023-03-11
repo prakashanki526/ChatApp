@@ -146,7 +146,7 @@
     color: #45f3ff;
 }
 
-input[type="submit"]{
+.submitBtn{
     border: none;
     outline: none;
     background: #45f3ff;
@@ -161,10 +161,10 @@ input[type="submit"]{
     width: 100%;
     margin-top: 4rem;
 }
-input[type="submit"]:active{
+.submitBtn:active{
     transform: translateY(2px);
 }
 
-input[type="submit"]:active{
+.submitBtn:active{
     opacity: 0.8;
 }

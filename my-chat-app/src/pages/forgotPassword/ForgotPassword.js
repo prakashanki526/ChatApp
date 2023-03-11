@@ -51,7 +51,7 @@ const ForgotPassword = () => {
                     </div>
 
                     <div className={styles.wrapper}>
-                        <input type="submit" value="Confirm"></input>
+                        <input type="submit" className={styles.submitBtn} value="Confirm"></input>
                         <div className={styles.links}>
                             <Link to={"/login"}>Back to Login</Link>
                             <Link to={"/signup"}>Register</Link>

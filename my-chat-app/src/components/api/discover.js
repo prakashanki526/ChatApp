@@ -48,6 +48,11 @@ export async function recoverPassword({email, password}) {
     return result.data;
 }
 
+export async function getUsersList(email) {
+    const reqUrl = `http://localhost:3001/discover/getUsersList?email=${email}`;
+    const result = await axios.get(reqUrl);
+    return result.data;
+}
 
 
 // export async function updateUser(response) {

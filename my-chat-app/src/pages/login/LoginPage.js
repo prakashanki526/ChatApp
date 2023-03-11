@@ -26,6 +26,7 @@ const LoginPage = () => {
         }
         
         localStorage.token = data.token;
+        localStorage.email = email;
         navigate('/');
     }
 
@@ -50,7 +51,7 @@ const LoginPage = () => {
                         <i></i>
                     </div>
                     <div className={styles.wrapper}>
-                        <input type="submit" value="Login"></input>
+                        <input type="submit" className={styles.submitBtn} value="Login"></input>
                         <div className={styles.links}>
                             <Link to={"/forgotPassword"}>Forgot Password ?</Link>
                             <Link to={"/signup"}>Register</Link>
