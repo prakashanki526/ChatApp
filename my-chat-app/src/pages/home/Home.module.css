@@ -36,8 +36,23 @@
     color: grey;
 }
 
+.chatPageSidebar{
+    flex: 2;
+    height: 100vh;
+    display: none;
+}
+
+.chatPageChatArea{
+    flex: 5;
+    height: 100vh;
+}
+
 @media screen and (min-width: 767px) {
     .chatArea{
+        display: inline;
+    }
+
+    .chatPageSidebar{
         display: inline;
     }
 }

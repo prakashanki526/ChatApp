@@ -10,17 +10,17 @@
 .sidebar{
     flex: 2;
     height: 100vh;
+    display: none;
 }
 
 .chatArea{
     flex: 5;
     height: 100vh;
-    display: none;
 }
 
 
 @media screen and (min-width: 767px) {
-    .chatArea{
+    .sidebar{
         display: inline;
     }
 }

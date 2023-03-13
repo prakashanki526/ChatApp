@@ -9,7 +9,9 @@ const Sidebar = (props) => {
     const [userList, setUserList] = useState([]);
     
     async function getUsers(email){
+        props.setIsLoading(true);
         const list = await getUsersList(email);
+        props.setIsLoading(false);
         setUserList(list);
     }
 
@@ -23,10 +25,10 @@ const Sidebar = (props) => {
             <div className={styles.findUser}>
                 <FindUser />
             </div>
-            <h5>CONNECTED USERS</h5>
+            <h5>REGISTERED USERS</h5>
             <div className={styles.connectedUsers}>
                 {userList.map((user,index) => {
-                    return <User key={index} userData={user} />
+                    return <User key={index} userData={user} index={index} setRoom={props.setRoom} />
                 })}
             </div>
         </div>

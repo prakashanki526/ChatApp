@@ -1,15 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import UserDataContext from "./userDataContext";
 
 const UserDataState = (props) => {
-    const [userData, setUserData] = useState({});
-    const state = {
-        "userData": userData,
-        "setUserData": setUserData
-    }
-    
+    let userData = {}
+
     return (
-        <UserDataContext.Provider value={state}>
+        <UserDataContext.Provider value={userData}>
             {props.children}
         </UserDataContext.Provider>
     );

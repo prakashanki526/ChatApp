@@ -1,21 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './Chat.module.css'
 import Sidebar from '../../components/sidebar/Sidebar';
 import UserChat from '../../components/chat/Chat';
 
-const Chat = (props) => {
-    const [partner, setPartner] = useState(localStorage.partner);
+const ChatWindow = (props) => {
     
     return (
         <div className={styles.home}>
             <div className={styles.sidebar}>
-                <Sidebar setPartner={setPartner} />
+                <Sidebar />
             </div>
             <div className={styles.chatArea}>
-                <UserChat partner={partner} />
+                <UserChat />
             </div>
         </div>
     );
 };
 
-export default Chat;
+export default ChatWindow;

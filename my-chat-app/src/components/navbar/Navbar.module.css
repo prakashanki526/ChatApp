@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     height: 60px;
-    padding: 10px;
+    padding: 10px 20px;
     /* background-color: #2f2d52; */
     background-color: #1c1c1c;
     justify-content: space-between;
@@ -14,6 +14,7 @@
 
 .logo{
     font-weight: bold;
+    cursor: pointer;
 }
 
 .user{

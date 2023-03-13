@@ -2,10 +2,12 @@ import React from 'react';
 import styles from './Message.module.css';
 
 const Message = (props) => {
+    const userEmail = localStorage.email;
+
     return (
         <div className={styles.container}>
-            <div className={props.sentMsg ? styles.sentMessage : styles.recievedMessage}>
-                This is a message. This is a message. This is a message. This is a message. This is a message.
+            <div className={userEmail === props.messageData.sender ? styles.sentMessage : styles.recievedMessage}>
+                {props.messageData.text}
             </div>
         </div>
     );

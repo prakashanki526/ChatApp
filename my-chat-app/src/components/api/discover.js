@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export async function authenticate(email) {
-    const reqUrl = `http://localhost:3001/discover/authenticate`;
+    const reqUrl = `https://chatbox-backend-qeni.onrender.com/discover/authenticate`;
     const result = await axios.post(reqUrl,email);
     return result.data;
 }
@@ -49,8 +49,26 @@ export async function recoverPassword({email, password}) {
 }
 
 export async function getUsersList(email) {
-    const reqUrl = `http://localhost:3001/discover/getUsersList?email=${email}`;
+    const reqUrl = `https://chatbox-backend-qeni.onrender.com/discover/getUsersList?email=${email}`;
     const result = await axios.get(reqUrl);
+    return result.data;
+}
+
+export async function openChat(sender, reciever) {
+    const reqUrl = `https://chatbox-backend-qeni.onrender.com/discover/createChat`;
+    const result = await axios.post(reqUrl,{sender,reciever});
+    return result.data;
+}
+
+export async function getAllMessages(sender, reciever) {
+    const reqUrl = `https://chatbox-backend-qeni.onrender.com/discover/getAllMessages?sender=${sender}&reciever=${reciever}`;
+    const result = await axios.get(reqUrl);
+    return result.data.messages;
+}
+
+export async function sendMessage(messageData) {
+    const reqUrl = `https://chatbox-backend-qeni.onrender.com/discover/sendMessage`;
+    const result = await axios.post(reqUrl,messageData);
     return result.data;
 }
 

@@ -1,5 +1,5 @@
 .container{
-    height: 50px;
+    height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -21,6 +21,13 @@
     width: 30px;
     border-radius: 100%;
     border: 1px solid white;
+    overflow: hidden;
+}
+
+.img{
+    height: 100%;
+    width: 100%;
+    /* overflow: hidden; */
 }
 
 .nameContainer{

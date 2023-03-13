@@ -14,6 +14,20 @@
     display: flex;
     align-items: center;
     padding: 0 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    justify-content: space-between;
+}
+
+.back{
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+.userDetail{
+    display: flex;
+    align-items: center;
 }
 
 .imgContainer{
@@ -21,12 +35,17 @@
     width: 30px;
     border-radius: 100%;
     border: 1px solid white;
+    overflow: hidden;
+}
+
+.img{
+    height: 100%;
+    width: 100%;
 }
 
 .nameContainer{
     margin-left: 15px;
     color: white;
-    letter-spacing: 1px;
     font-weight: 800;
 }
 
@@ -69,6 +88,7 @@
     font-size: 16px;
     display: flex;
     background-color: grey;
+    color: white;
 }
 
 .inputField::placeholder{
@@ -84,6 +104,9 @@
     border-radius: 100%;
     cursor: pointer;
     margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sendBtn:hover{
@@ -94,3 +117,8 @@
     transform: translateY(1px);
 }
 
+@media screen and (min-width: 767px) {
+    .back{
+        display: none;
+    }
+}
